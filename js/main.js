@@ -173,12 +173,14 @@ adminToggle?.addEventListener("click", () => {
   });
 
   document.querySelectorAll(
-    ".item-status, .item-lead, .item-impact, .item-feasibility, .item-start, .item-review, .item-notes"
+    ".item-status, .item-lead, .item-impact, .item-feasibility, .item-start, .item-review, .item-metric"
   ).forEach(el => {
     el.disabled = !adminMode;
   });
 
-  if (exportBtn) exportBtn.style.display = adminMode ? "inline-block" : "none";
+  if (exportBtn) {
+    exportBtn.style.display = adminMode ? "inline-block" : "none";
+  }
 
   adminToggle.textContent = adminMode ? "Exit Admin Mode" : "Admin Mode";
 });
