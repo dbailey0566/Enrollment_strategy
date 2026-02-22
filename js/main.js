@@ -197,3 +197,24 @@ document.addEventListener("keydown", function (e) {
   }
 
 });
+
+document.addEventListener("keydown", function (e) {
+
+  if (!adminMode) return;
+
+  const active = document.activeElement;
+
+  if (e.key === "Backspace" && active && active.tagName === "LI") {
+
+    if (active.textContent.trim() === "") {
+
+      const prev = active.previousElementSibling;
+      active.remove();
+
+      if (prev) prev.focus();
+
+      e.preventDefault();
+    }
+  }
+
+});
