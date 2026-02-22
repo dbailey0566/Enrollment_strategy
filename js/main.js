@@ -42,31 +42,64 @@ fetch("./data/pillars.json")
 
       // ---------- TIERS ----------
       const tiersHtml = p.tiers.map(tier => {
-
+      
         const itemsHtml = tier.items.map(item => {
-
+      
           const obj = typeof item === "string"
-            ? { text: item, status: "Proposed", lead: "" }
+            ? {
+                text: item,
+                status: "Proposed",
+                lead: "",
+                impact: 3,
+                feasibility: 3,
+                startDate: "",
+                reviewDate: "",
+                notes: ""
+              }
             : item;
-
+      
           return `
             <li class="plan-item">
+      
               <span class="editable item-text">${obj.text || ""}</span>
-
+      
               <select class="item-status" disabled>
-                ${["Proposed","Approved","Active","Complete","Retired"].map(s =>
-                  `<option value="${s}" ${obj.status === s ? "selected" : ""}>${s}</option>`
-                ).join("")}
+                ${["Proposed","Approved","Active","Complete","Retired"]
+                  .map(s => `<option value="${s}" ${obj.status === s ? "selected" : ""}>${s}</option>`)
+                  .join("")}
               </select>
-
+      
               <input class="item-lead" type="text"
                      value="${obj.lead || ""}"
                      placeholder="Lead"
                      disabled>
+      
+              <input class="item-impact" type="number" min="1" max="5"
+                     value="${obj.impact || 3}"
+                     disabled>
+      
+              <input class="item-feasibility" type="number" min="1" max="5"
+                     value="${obj.feasibility || 3}"
+                     disabled>
+      
+              <input class="item-start" type="date"
+                     value="${obj.startDate || ""}"
+                     disabled>
+      
+              <input class="item-review" type="date"
+                     value="${obj.reviewDate || ""}"
+                     disabled>
+      
+              <input class="item-notes" type="text"
+                     value="${obj.notes || ""}"
+                     placeholder="Notes"
+                     disabled>
+      
             </li>
           `;
+      
         }).join("");
-
+      
         return `
           <div class="tier">
             <strong>${tier.name}</strong>
@@ -75,82 +108,29 @@ fetch("./data/pillars.json")
             </ul>
           </div>
         `;
+      
       }).join("");
-
-      // ---------- NOTES ----------
-      const notesHtml = p.notes
-        ? `<div class="notes"><strong>Note</strong><div class="editable">${p.notes}</div></div>`
-        : "";
-
+    const notesHtml = p.notes
+      ? `<div class="notes"><strong>Note</strong><div class="editable">${p.notes}</div></div>`
+      : "";
       // ---------- SECTION HTML ----------
       section.innerHTML = `
         <details open>
           <summary><strong>${p.title}</strong></summary>
           <div class="card">
-
+      
             <strong>Goal</strong>
             <div class="editable goal">${p.goal}</div>
-
+      
             ${tiersHtml}
-
+      
             ${notesHtml}
-
+      
             <strong>Metrics</strong>
             <ul class="metrics">
               ${(p.metrics || []).map(m => `<li class="editable">${m}</li>`).join("")}
             </ul>
-
-            <div class="governance">
-              <hr style="margin:16px 0;">
-              <strong>Strategy Governance</strong>
-
-              <div style="margin-top:8px;">
-                <label>Status</label>
-                <select class="gov-status" disabled>
-                  ${["Proposed","Approved","Pilot","Active","Retired"]
-                    .map(s => `<option value="${s}" ${p.governance?.status===s?"selected":""}>${s}</option>`)
-                    .join("")}
-                </select>
-
-                <label style="margin-left:10px;">Impact</label>
-                <input type="number" min="1" max="5"
-                       class="gov-impact"
-                       value="${p.governance?.impact || 3}"
-                       disabled>
-
-                <label style="margin-left:10px;">Feasibility</label>
-                <input type="number" min="1" max="5"
-                       class="gov-feasibility"
-                       value="${p.governance?.feasibility || 3}"
-                       disabled>
-              </div>
-
-              <div style="margin-top:8px;">
-                <label>Lead</label>
-                <input type="text"
-                       class="gov-lead"
-                       value="${p.governance?.lead || ""}"
-                       disabled>
-
-                <label style="margin-left:10px;">Start</label>
-                <input type="date"
-                       class="gov-start"
-                       value="${p.governance?.startDate || ""}"
-                       disabled>
-
-                <label style="margin-left:10px;">Review</label>
-                <input type="date"
-                       class="gov-review"
-                       value="${p.governance?.reviewDate || ""}"
-                       disabled>
-              </div>
-
-              <div style="margin-top:8px;">
-                <label>Notes</label>
-                <div class="editable gov-notes">${p.governance?.notes || ""}</div>
-              </div>
-            </div>
-
+      
           </div>
         </details>
       `;
@@ -179,7 +159,7 @@ adminToggle?.addEventListener("click", () => {
   });
 
   document.querySelectorAll(
-    ".item-status, .item-lead, .gov-status, .gov-impact, .gov-feasibility, .gov-lead, .gov-start, .gov-review"
+    ".item-status, .item-lead, .item-impact, .item-feasibility, .item-start, .item-review, .item-notes"
   ).forEach(el => {
     el.disabled = !adminMode;
   });
@@ -215,10 +195,16 @@ exportBtn?.addEventListener("click", () => {
 
       const name = tierDiv.querySelector("strong")?.textContent.trim() || "";
 
+
       const items = Array.from(tierDiv.querySelectorAll("li.plan-item")).map(li => ({
         text: li.querySelector(".item-text")?.textContent.trim() || "",
         status: li.querySelector(".item-status")?.value || "Proposed",
-        lead: li.querySelector(".item-lead")?.value.trim() || ""
+        lead: li.querySelector(".item-lead")?.value.trim() || "",
+        impact: parseInt(li.querySelector(".item-impact")?.value) || 3,
+        feasibility: parseInt(li.querySelector(".item-feasibility")?.value) || 3,
+        startDate: li.querySelector(".item-start")?.value || "",
+        reviewDate: li.querySelector(".item-review")?.value || "",
+        notes: li.querySelector(".item-notes")?.value.trim() || ""
       }));
 
       return { name, items };
@@ -232,23 +218,14 @@ exportBtn?.addEventListener("click", () => {
     const notes = notesEl ? notesEl.textContent.trim() : undefined;
 
     // ---------- GOVERNANCE ----------
-    const governance = {
-      status: section.querySelector(".gov-status")?.value || "Proposed",
-      impact: parseInt(section.querySelector(".gov-impact")?.value) || 3,
-      feasibility: parseInt(section.querySelector(".gov-feasibility")?.value) || 3,
-      lead: section.querySelector(".gov-lead")?.value || "",
-      startDate: section.querySelector(".gov-start")?.value || "",
-      reviewDate: section.querySelector(".gov-review")?.value || "",
-      notes: section.querySelector(".gov-notes")?.textContent.trim() || ""
-    };
+
 
     const pillarObj = {
       id,
       title,
       goal,
       tiers,
-      metrics,
-      governance
+      metrics
     };
 
     if (notes) pillarObj.notes = notes;
@@ -297,16 +274,28 @@ document.addEventListener("keydown", function (e) {
 
     const li = active.closest("li.plan-item");
     if (!li) return;
-
+    
     const newLi = document.createElement("li");
     newLi.className = "plan-item";
     newLi.innerHTML = `
       <span class="editable item-text"></span>
+    
       <select class="item-status">
         ${["Proposed","Approved","Active","Complete","Retired"]
           .map(s => `<option value="${s}">${s}</option>`).join("")}
       </select>
+    
       <input class="item-lead" type="text" placeholder="Lead">
+    
+      <input class="item-impact" type="number" min="1" max="5" value="3">
+    
+      <input class="item-feasibility" type="number" min="1" max="5" value="3">
+    
+      <input class="item-start" type="date">
+    
+      <input class="item-review" type="date">
+    
+      <input class="item-notes" type="text" placeholder="Notes">
     `;
 
     li.parentNode.insertBefore(newLi, li.nextSibling);
@@ -314,6 +303,11 @@ document.addEventListener("keydown", function (e) {
     newLi.querySelector(".item-text").contentEditable = true;
     newLi.querySelector(".item-status").disabled = false;
     newLi.querySelector(".item-lead").disabled = false;
+    newLi.querySelector(".item-impact").disabled = false;
+    newLi.querySelector(".item-feasibility").disabled = false;
+    newLi.querySelector(".item-start").disabled = false;
+    newLi.querySelector(".item-review").disabled = false;
+    newLi.querySelector(".item-notes").disabled = false;
 
     newLi.querySelector(".item-text").focus();
   }
