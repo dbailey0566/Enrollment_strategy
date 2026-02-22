@@ -57,11 +57,50 @@ fetch("./data/pillars.json")
             ${tiersHtml}
 
             ${notesHtml}
-
+            
             <strong>Metrics</strong>
-            <ul class="metrics">
+            <ul>
               ${p.metrics.map(m => `<li class="editable">${m}</li>`).join("")}
             </ul>
+            
+            <div class="governance">
+              <hr style="margin:16px 0;">
+            
+              <strong>Strategy Governance</strong>
+            
+              <div style="margin-top:8px;">
+            
+                <label>Status</label>
+                <select class="gov-status">
+                  ${["Proposed","Approved","Pilot","Active","Retired"]
+                    .map(s => `<option value="${s}" ${p.governance?.status===s?"selected":""}>${s}</option>`)
+                    .join("")}
+                </select>
+            
+                <label style="margin-left:10px;">Impact (1-5)</label>
+                <input type="number" min="1" max="5" class="gov-impact" value="${p.governance?.impact || 3}">
+            
+                <label style="margin-left:10px;">Feasibility (1-5)</label>
+                <input type="number" min="1" max="5" class="gov-feasibility" value="${p.governance?.feasibility || 3}">
+              </div>
+            
+              <div style="margin-top:8px;">
+                <label>Lead</label>
+                <input type="text" class="gov-lead editable" value="${p.governance?.lead || ""}" placeholder="Faculty or staff lead">
+            
+                <label style="margin-left:10px;">Start</label>
+                <input type="date" class="gov-start" value="${p.governance?.startDate || ""}">
+            
+                <label style="margin-left:10px;">Review</label>
+                <input type="date" class="gov-review" value="${p.governance?.reviewDate || ""}">
+              </div>
+            
+              <div style="margin-top:8px;">
+                <label>Notes</label>
+                <div class="editable gov-notes">${p.governance?.notes || ""}</div>
+              </div>
+            
+            </div>
 
           </div>
         </details>
