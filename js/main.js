@@ -37,10 +37,25 @@ fetch("./data/pillars.json")
         <div class="tier">
           <strong>${tier.name}</strong>
           <ul>
-            ${tier.items.map(item => `<li class="editable">${item}</li>`).join("")}
-          </ul>
-        </div>
-      `).join("");
+            ${tier.items.map(item => {
+              const obj = typeof item === "string"
+                ? { text: item, status: "Proposed", lead: "" }
+                : item;
+            
+              return `
+                <li class="plan-item">
+                  <span class="editable item-text">${obj.text}</span>
+            
+                  <select class="item-status">
+                    ${["Proposed","Approved","Active","Complete","Retired"].map(s =>
+                      `<option value="${s}" ${obj.status === s ? "selected" : ""}>${s}</option>`
+                    ).join("")}
+                  </select>
+            
+                  <input class="item-lead" type="text" value="${obj.lead || ""}" placeholder="Lead">
+                </li>
+              `;
+            }).join("")}
 
       const notesHtml = p.notes
         ? `<div class="notes"><strong>Note</strong><div class="editable">${p.notes}</div></div>`
