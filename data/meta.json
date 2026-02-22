@@ -1,21 +1,7 @@
 {
-  "id": "pillar1",
-  "title": "Internal Pipeline and Relationship Capital",
-  "goal": "Stabilize enrollment through owned networks rather than paid marketing.",
-  "tiers": [
-    {
-      "name": "Tier 1: Immediately Feasible",
-      "items": []
-    },
-    {
-      "name": "Tier 2: Structured Partnership Development",
-      "items": []
-    },
-    {
-      "name": "Tier 3: Advisory and Ecosystem Expansion",
-      "items": []
-    }
-  ],
-  "metrics": [],
-  "notes": "Optional structural note"
+  "version": "1.0",
+  "lastUpdated": "2026-02-22",
+  "reviewCycle": "Quarterly",
+  "title": "APSU EdD Strategic Enrollment Framework",
+  "description": "Six pillar strategic enrollment model organized by feasibility tiers."
 }
