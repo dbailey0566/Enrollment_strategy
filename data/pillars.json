@@ -1,51 +1,117 @@
-[
-  {
-    "id": "pillar1",
-    "title": "Internal Pipeline and Relationship Capital",
-    "goal": "Stabilize enrollment through owned networks rather than paid marketing.",
-    "tiers": [
-      {
-        "name": "Tier 1: Immediately Feasible",
-        "items": [
-          { "text": "Formal Student Ambassador Program", "status": "Proposed", "lead": "", "impact": 3, "feasibility": 3, "startDate": "", "reviewDate": "", "metric": "" },
-          { "text": "Alumni engagement group", "status": "Proposed", "lead": "", "impact": 3, "feasibility": 3, "startDate": "", "reviewDate": "", "metric": "" },
-          { "text": "Student and alumni testimonial video series", "status": "Proposed", "lead": "", "impact": 3, "feasibility": 3, "startDate": "", "reviewDate": "", "metric": "" },
-          { "text": "Refer-a-colleague initiative", "status": "Proposed", "lead": "", "impact": 3, "feasibility": 3, "startDate": "", "reviewDate": "", "metric": "" },
-          { "text": "Bring a Future Leader alumni referral recognition", "status": "Proposed", "lead": "", "impact": 3, "feasibility": 3, "startDate": "", "reviewDate": "", "metric": "" },
-          { "text": "Alumni impact map", "status": "Proposed", "lead": "", "impact": 3, "feasibility": 3, "startDate": "", "reviewDate": "", "metric": "" },
-          { "text": "Future Doctor pathway for APSU master’s students", "status": "Proposed", "lead": "", "impact": 3, "feasibility": 3, "startDate": "", "reviewDate": "", "metric": "" },
-          { "text": "Early advising and seminar invitations for APSU master’s students", "status": "Proposed", "lead": "", "impact": 3, "feasibility": 3, "startDate": "", "reviewDate": "", "metric": "" },
-          { "text": "Faculty guest lectures across campus and local districts", "status": "Proposed", "lead": "", "impact": 3, "feasibility": 3, "startDate": "", "reviewDate": "", "metric": "" },
-          { "text": "Stronger collaboration with MSL and statistics programs", "status": "Proposed", "lead": "", "impact": 3, "feasibility": 3, "startDate": "", "reviewDate": "", "metric": "" }
-        ]
-      },
-      {
-        "name": "Tier 2: Structured Partnership Development",
-        "items": [
-          { "text": "District partnership cohorts", "status": "Proposed", "lead": "", "impact": 3, "feasibility": 3, "startDate": "", "reviewDate": "", "metric": "" },
-          { "text": "Clarksville-Montgomery County pipeline", "status": "Proposed", "lead": "", "impact": 3, "feasibility": 3, "startDate": "", "reviewDate": "", "metric": "" },
-          { "text": "Fort Campbell partnership", "status": "Proposed", "lead": "", "impact": 3, "feasibility": 3, "startDate": "", "reviewDate": "", "metric": "" },
-          { "text": "Rural district cohort model", "status": "Proposed", "lead": "", "impact": 3, "feasibility": 3, "startDate": "", "reviewDate": "", "metric": "" },
-          { "text": "Tennessee community college partnerships", "status": "Proposed", "lead": "", "impact": 3, "feasibility": 3, "startDate": "", "reviewDate": "", "metric": "" },
-          { "text": "Walter State style contract expansion", "status": "Proposed", "lead": "", "impact": 3, "feasibility": 3, "startDate": "", "reviewDate": "", "metric": "" },
-          { "text": "Employer tuition alignment strategy", "status": "Proposed", "lead": "", "impact": 3, "feasibility": 3, "startDate": "", "reviewDate": "", "metric": "" }
-        ]
-      },
-      {
-        "name": "Tier 3: Advisory and Ecosystem Expansion",
-        "items": [
-          { "text": "EdD partnership advisory board", "status": "Proposed", "lead": "", "impact": 3, "feasibility": 3, "startDate": "", "reviewDate": "", "metric": "" },
-          { "text": "Regional intercollegiate collaboration", "status": "Proposed", "lead": "", "impact": 3, "feasibility": 3, "startDate": "", "reviewDate": "", "metric": "" },
-          { "text": "CEU plus LinkedIn badge ecosystem", "status": "Proposed", "lead": "", "impact": 3, "feasibility": 3, "startDate": "", "reviewDate": "", "metric": "" },
-          { "text": "Corporate tuition agreements", "status": "Proposed", "lead": "", "impact": 3, "feasibility": 3, "startDate": "", "reviewDate": "", "metric": "" }
-        ]
-      }
-    ],
-    "metrics": [
-      "Referral source tracking in SLATE",
-      "Conversion from referral",
-      "Partnership MOUs",
-      "Cohort size stability"
-    ]
+async function loadPillars() {
+
+  try {
+
+    const snap = await getDoc(doc(db, "strategy", "pillars"));
+
+    if (!snap.exists()) {
+      console.error("No strategy document found.");
+      return;
+    }
+
+    const pillars = snap.data().data;
+
+    const container = document.getElementById("pillarContainer");
+    if (!container) return;
+
+    container.innerHTML = "";
+
+    pillars.forEach(p => {
+
+      const section = document.createElement("section");
+      section.dataset.pillarId = p.id;
+
+      // ---------- ITEMS ----------
+      const itemsHtml = (p.items || []).map(item => {
+
+        return `
+          <div class="plan-item-block">
+
+            <div class="editable item-text">
+              ${item.text || ""}
+            </div>
+
+            <div class="plan-item-controls">
+
+              <select class="item-tier" disabled>
+                ${["Immediate","Mid-Term","Long-Term"]
+                  .map(t => `<option value="${t}" ${item.tier === t ? "selected" : ""}>${t}</option>`)
+                  .join("")}
+              </select>
+
+              <select class="item-status" disabled>
+                ${["Proposed","Approved","Active","Complete","Retired"]
+                  .map(s => `<option value="${s}" ${item.status === s ? "selected" : ""}>${s}</option>`)
+                  .join("")}
+              </select>
+
+              <input class="item-lead" type="text"
+                value="${item.lead || ""}"
+                placeholder="Lead"
+                disabled>
+
+              <input class="item-impact" type="number"
+                min="1" max="5"
+                value="${item.impact || 3}"
+                disabled>
+
+              <input class="item-feasibility" type="number"
+                min="1" max="5"
+                value="${item.feasibility || 3}"
+                disabled>
+
+              <input class="item-start" type="date"
+                value="${item.startDate || ""}"
+                disabled>
+
+              <input class="item-review" type="date"
+                value="${item.reviewDate || ""}"
+                disabled>
+
+              <input class="item-metric" type="text"
+                value="${item.metric || ""}"
+                placeholder="Metric"
+                disabled>
+
+            </div>
+
+          </div>
+        `;
+
+      }).join("");
+
+      // ---------- NOTES ----------
+      const notesHtml = p.notes
+        ? `<div class="notes"><strong>Note</strong><div class="editable">${p.notes}</div></div>`
+        : "";
+
+      // ---------- SECTION HTML ----------
+      section.innerHTML = `
+        <details open>
+          <summary><strong>${p.title}</strong></summary>
+          <div class="card">
+
+            <strong>Goal</strong>
+            <div class="editable goal">${p.goal}</div>
+
+            ${itemsHtml}
+
+            <strong>Metrics</strong>
+            <ul class="metrics">
+              ${(p.metrics || []).map(m => `<li class="editable">${m}</li>`).join("")}
+            </ul>
+
+            ${notesHtml}
+
+          </div>
+        </details>
+      `;
+
+      container.appendChild(section);
+
+    });
+
+  } catch (err) {
+    console.error("Error loading pillars:", err);
   }
-]
+}

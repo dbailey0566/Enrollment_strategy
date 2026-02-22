@@ -5,8 +5,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Enrollment Strategic Plan</title>
+
   <link rel="stylesheet" href="css/styles.css">
-  <script defer src="js/main.js"></script>
+
+  <!-- SortableJS (must load before main.js) -->
+  <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>
+
+  <!-- MAIN SCRIPT -->
+  <script type="module" src="js/main.js"></script>
 </head>
 
 <body>
@@ -18,9 +24,11 @@
         <p id="metaInfo" class="meta"></p>
       </div>
       <div class="actions">
-        <button id="printBtn">Print</button>
-        <button id="adminToggle">Admin Mode</button>
-        <button id="exportJsonBtn" style="display:none;">Prepare Plan Update</button>
+        <button type="button" id="printBtn">Print</button>
+        <button type="button" id="adminToggle">Admin Mode</button>
+        <button type="button" id="exportJsonBtn" style="display:none;">
+          Save Changes
+        </button>
       </div>
     </div>
   </header>
@@ -29,7 +37,8 @@
 
     <div id="pillarContainer"></div>
 
-    <section id="aiExplorer" class="card" style="margin-top:20px;">
+    <!-- AI EXPLORER -->
+    <section id="aiExplorer" class="card">
       <h2>AI Strategy Explorer</h2>
 
       <p class="muted">
@@ -37,76 +46,80 @@
       </p>
 
       <textarea id="aiStrategyInput"
-        placeholder="Paste strategy text here..."
-        style="width:100%; min-height:120px; margin-top:8px;"></textarea>
+        placeholder="Paste strategy text here..."></textarea>
 
-      <div class="ai-prompt-buttons"
-        style="margin-top:12px; display:flex; flex-wrap:wrap; gap:8px;">
+      <div class="ai-prompt-buttons">
 
-        <button data-prompt="Expand this strategy into a 6 month implementation roadmap with milestones." class="btn">
+        <button type="button"
+          data-prompt="Expand this strategy into a 6 month implementation roadmap with milestones."
+          class="btn">
           Implementation Roadmap
         </button>
 
-        <button data-prompt="Identify risks, barriers, and mitigation strategies for this strategy." class="btn">
+        <button type="button"
+          data-prompt="Identify risks, barriers, and mitigation strategies for this strategy."
+          class="btn">
           Risk Analysis
         </button>
 
-        <button data-prompt="Develop measurable KPIs and assessment metrics." class="btn">
+        <button type="button"
+          data-prompt="Develop measurable KPIs and assessment metrics."
+          class="btn">
           KPIs
         </button>
 
-        <button data-prompt="Create a stakeholder communication plan." class="btn">
+        <button type="button"
+          data-prompt="Create a stakeholder communication plan."
+          class="btn">
           Communication Plan
         </button>
 
-        <button data-prompt="Outline budget considerations and funding sources." class="btn">
+        <button type="button"
+          data-prompt="Outline budget considerations and funding sources."
+          class="btn">
           Budget Strategy
         </button>
 
-        <button data-prompt="Translate this into an executive briefing for senior leadership." class="btn">
+        <button type="button"
+          data-prompt="Translate this into an executive briefing for senior leadership."
+          class="btn">
           Executive Brief
         </button>
 
       </div>
 
-      <div style="margin-top:10px;">
+      <div class="ai-links">
         <a href="https://chat.openai.com" target="_blank">Open GPT</a> |
         <a href="https://gemini.google.com" target="_blank">Open Gemini</a>
       </div>
     </section>
 
-    <section id="planFeedback" class="card" style="margin-top:20px;">
+    <!-- CONTRIBUTION SECTION -->
+    <section id="planFeedback" class="card">
       <h2>Strategic Plan Contribution</h2>
 
       <p class="muted">
         Submit suggested additions or refinements to the strategic plan.
       </p>
+	  <label><strong>Your Name</strong></label>
+	  <input type="text" id="contributorNameInput" placeholder="First and Last Name">
 
       <label><strong>New Strategy Proposal</strong></label>
-      <textarea id="newStrategyInput"
-        style="width:100%; min-height:80px;"></textarea>
+      <textarea id="newStrategyInput"></textarea>
 
-      <label style="margin-top:12px; display:block;">
-        <strong>Edit Recommendation</strong>
-      </label>
-      <textarea id="editRecommendationInput"
-        style="width:100%; min-height:80px;"></textarea>
+      <label><strong>Edit Recommendation</strong></label>
+      <textarea id="editRecommendationInput"></textarea>
 
-      <label style="margin-top:12px; display:block;">
-        <strong>Interface Improvement</strong>
-      </label>
-      <textarea id="pageImprovementInput"
-        style="width:100%; min-height:80px;"></textarea>
+      <label><strong>Interface Improvement</strong></label>
+      <textarea id="pageImprovementInput"></textarea>
 
-      <button id="submitFeedbackBtn"
-        class="btn primary"
-        style="margin-top:14px;">
+      <button type="button"
+        id="submitFeedbackBtn"
+        class="btn primary">
         Submit Contribution
       </button>
 
-      <div id="feedbackStatus"
-        class="muted"
-        style="margin-top:8px;"></div>
+      <div id="feedbackStatus" class="muted"></div>
     </section>
 
   </main>
@@ -115,16 +128,18 @@
     Strategic plan version controlled via GitHub.
   </footer>
 
+  <!-- JSON EXPORT MODAL -->
   <div id="jsonModal" class="modal" style="display:none;">
     <div class="modal-content">
       <h3>Updated pillars.json</h3>
       <textarea id="jsonOutput"></textarea>
       <div class="modal-actions">
-        <button id="copyJsonBtn">Copy</button>
-        <button id="closeModalBtn">Close</button>
+        <button type="button" id="copyJsonBtn">Copy</button>
+        <button type="button" id="closeModalBtn">Close</button>
       </div>
     </div>
   </div>
 
+  <!--<script type="module" src="js/seed.js"></script>-->
 </body>
 </html>
