@@ -54,7 +54,7 @@
       "lead": "",
       "startDate": "",
       "reviewDate": "",
-      "notes": ""
+      "metric": "Applications generated per semester"
     }
   },
   {
@@ -113,7 +113,7 @@
       "lead": "",
       "startDate": "",
       "reviewDate": "",
-      "notes": ""
+      "metric": "Applications generated per semester"
     }
   },
   {
@@ -169,7 +169,7 @@
       "lead": "",
       "startDate": "",
       "reviewDate": "",
-      "notes": ""
+      "metric": "Applications generated per semester"
     }
   },
   {
@@ -220,7 +220,7 @@
       "lead": "",
       "startDate": "",
       "reviewDate": "",
-      "notes": ""
+      "metric": "Applications generated per semester"
     }
   },
   {
@@ -271,7 +271,7 @@
       "lead": "",
       "startDate": "",
       "reviewDate": "",
-      "notes": ""
+      "metric": "Applications generated per semester"
     }
   },
   {
@@ -319,7 +319,7 @@
       "lead": "",
       "startDate": "",
       "reviewDate": "",
-      "notes": ""
+      "metric": "Applications generated per semester"
     }
   }
 ]
