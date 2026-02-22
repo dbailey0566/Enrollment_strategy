@@ -171,3 +171,7 @@ textarea:focus {
   border:1px solid var(--border);
   border-radius:8px;
 }
+
+.card + .card {
+  margin-top: 20px;
+}
