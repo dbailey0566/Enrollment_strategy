@@ -1,34 +1,271 @@
 [
   {
     "id": "pillar1",
-    "title": "Strengthen Brand Identity",
-    "goal": "Position the program as mission driven and professionally elevating.",
-    "actions": [
-      "Launch Love 4 Teaching campaign",
-      "Develop unified messaging strategy",
-      "Highlight microcredentials",
-      "Emphasize wellbeing"
+    "title": "Internal Pipeline and Relationship Capital",
+    "goal": "Stabilize enrollment through owned networks rather than paid marketing.",
+    "tiers": [
+      {
+        "name": "Tier 1: Immediately Feasible",
+        "items": [
+          "Formal Student Ambassador Program",
+          "Alumni engagement group",
+          "Student and alumni testimonial video series",
+          "Refer-a-colleague initiative",
+          "Bring a Future Leader alumni referral recognition",
+          "Alumni impact map",
+          "Future Doctor pathway for APSU master’s students",
+          "Early advising and seminar invitations for APSU master’s students",
+          "Faculty guest lectures across campus and local districts",
+          "Stronger collaboration with MSL and statistics programs"
+        ]
+      },
+      {
+        "name": "Tier 2: Structured Partnership Development",
+        "items": [
+          "District partnership cohorts",
+          "Clarksville-Montgomery County pipeline",
+          "Fort Campbell partnership",
+          "Rural district cohort model",
+          "Tennessee community college partnerships",
+          "Walter State style contract expansion",
+          "Employer tuition alignment strategy"
+        ]
+      },
+      {
+        "name": "Tier 3: Advisory and Ecosystem Expansion",
+        "items": [
+          "EdD partnership advisory board",
+          "Regional intercollegiate collaboration",
+          "CEU plus LinkedIn badge ecosystem",
+          "Corporate tuition agreements"
+        ]
+      }
     ],
     "metrics": [
-      "Website traffic",
-      "Social engagement",
-      "Inquiry conversion rate"
+      "Referral source tracking in SLATE",
+      "Conversion from referral",
+      "Partnership MOUs",
+      "Cohort size stability"
     ]
   },
   {
     "id": "pillar2",
-    "title": "Leverage Internal Pipeline",
-    "goal": "Maximize word of mouth and internal referrals.",
-    "actions": [
-      "Formal ambassador program",
-      "Alumni engagement group",
-      "Student testimonial series",
-      "Refer a colleague initiative"
+    "title": "Funding and Financial Leverage",
+    "goal": "Reduce financial friction while protecting program margin.",
+    "tiers": [
+      {
+        "name": "Tier 1: Immediately Feasible",
+        "items": [
+          "Expand summer GA support",
+          "Allocate portion of graduate research grants to EdD students",
+          "Micro-scholarships for dissertation completion",
+          "Conference mini-grants for cohorts",
+          "Credit for prior learning clarification",
+          "Military credit articulation expansion",
+          "Align credit load with employer reimbursement caps"
+        ]
+      },
+      {
+        "name": "Tier 2: Strategic Revenue Models",
+        "items": [
+          "District tuition sharing models",
+          "50/50 tuition split agreements",
+          "Employer reimbursement optimization",
+          "Differential tuition reinvestment into scholarships",
+          "Internal assistantship pool within COE",
+          "Cross-campus assistantships",
+          "Formal mid-point master’s exit option"
+        ]
+      },
+      {
+        "name": "Tier 3: External Funding and Grants",
+        "items": [
+          "Federal grants with stipend lines",
+          "OSEP, TQP, NSF-Noyce pipelines",
+          "State shortage initiative alignment",
+          "Grow Your Own leadership programs",
+          "Foundation funded thematic fellowships",
+          "Named cohort scholarship funds",
+          "Donor targeting of retired principals and superintendents"
+        ]
+      }
     ],
     "metrics": [
-      "Referral tracking",
-      "Alumni engagement rate",
-      "Conversion from referral"
+      "Scholarship dollars secured",
+      "Assistantships created",
+      "Tuition-share agreements",
+      "Graduation rate"
+    ],
+    "notes": "Finance requires breakeven modeling. Scholarships must be tied to growth or completion gains. Graduate funding formula pays for completions. Retention equals revenue."
+  },
+  {
+    "id": "pillar3",
+    "title": "Brand Differentiation and Market Position",
+    "goal": "Own a distinctive identity tied to APSU regional strengths.",
+    "tiers": [
+      {
+        "name": "Tier 1: Clarify Identity",
+        "items": [
+          "Unified professional identity messaging",
+          "Leadership for the New South positioning",
+          "Rural and small district innovation focus",
+          "Military connected leadership emphasis",
+          "Community anchored transformation focus",
+          "Highlight microcredentials and CEUs",
+          "Emphasize wellbeing and professional growth"
+        ]
+      },
+      {
+        "name": "Tier 2: Public Facing Authority Engine",
+        "items": [
+          "APSU Leadership Lab hub",
+          "Public research briefs",
+          "Student innovation showcase",
+          "Faculty thought leadership pieces",
+          "EdD podcast series",
+          "Short form video micro-content"
+        ]
+      },
+      {
+        "name": "Tier 3: Buzz Generators",
+        "items": [
+          "Leadership Residency retreat",
+          "Innovation mini-grants",
+          "Accelerator option for strong candidates",
+          "AI concentration",
+          "Study abroad pilot",
+          "Exchange partnerships"
+        ]
+      }
+    ],
+    "metrics": [
+      "Website traffic",
+      "Social engagement",
+      "New program enrollment by concentration",
+      "External media engagement"
+    ]
+  },
+  {
+    "id": "pillar4",
+    "title": "Digital Conversion and Systems",
+    "goal": "Increase inquiry to application to enrollment yield.",
+    "tiers": [
+      {
+        "name": "Tier 1: Immediate Fixes",
+        "items": [
+          "Mobile optimized site",
+          "Clear calls to action",
+          "Direct but monitored faculty response expectations",
+          "Standard 24 hour faculty response protocol",
+          "Short video embedded on landing page",
+          "One way text via SLATE optimization"
+        ]
+      },
+      {
+        "name": "Tier 2: Structured Follow Up",
+        "items": [
+          "Automated but personalized email sequences",
+          "Barrier based messaging",
+          "Faculty response accountability dashboard",
+          "Prospect to class preview invitations"
+        ]
+      },
+      {
+        "name": "Tier 3: Experiential Conversion",
+        "items": [
+          "Doctoral preview nights",
+          "Sit in on class",
+          "Dissertation demystification sessions",
+          "Virtual lab tours"
+        ]
+      }
+    ],
+    "metrics": [
+      "Click to application rate",
+      "Application to enrollment rate",
+      "Response time",
+      "Cost per enrollment"
+    ]
+  },
+  {
+    "id": "pillar5",
+    "title": "Access and Structural Onboarding",
+    "goal": "Make entry and persistence predictable and supported.",
+    "tiers": [
+      {
+        "name": "Tier 1: Immediate",
+        "items": [
+          "Clarify transfer policies",
+          "Strengthen military articulation",
+          "Build onboarding support module",
+          "Welcome package addressing imposter syndrome",
+          "Structured dissertation support marketing",
+          "Writing bootcamps",
+          "Peer accountability pods"
+        ]
+      },
+      {
+        "name": "Tier 2: Pipeline Development",
+        "items": [
+          "Stackable microcredentials feeding EdD",
+          "Certificate to doctorate pathways",
+          "Bridge programs",
+          "Master’s to doctorate bridge"
+        ]
+      },
+      {
+        "name": "Tier 3: Targeted Recruitment Segments",
+        "items": [
+          "Military and veteran leadership track",
+          "International student funding exploration",
+          "Concentration specific marketing assets"
+        ]
+      }
+    ],
+    "metrics": [
+      "First semester retention",
+      "Transfer enrollment growth",
+      "Military enrollment growth",
+      "Time to candidacy"
+    ]
+  },
+  {
+    "id": "pillar6",
+    "title": "Retention as Revenue Strategy",
+    "goal": "Increase completion without lowering standards.",
+    "tiers": [
+      {
+        "name": "Tier 1: Structural Clarity",
+        "items": [
+          "Set target graduation rate",
+          "Mid point performance review",
+          "Optional master’s exit credential",
+          "Transparent dissertation timeline"
+        ]
+      },
+      {
+        "name": "Tier 2: Community and Mentorship",
+        "items": [
+          "Cohort travel support",
+          "Structured mentoring",
+          "Faculty accountability for response time",
+          "Alumni dissertation panels"
+        ]
+      },
+      {
+        "name": "Tier 3: Data and Storytelling",
+        "items": [
+          "Track promotion and leadership outcomes",
+          "Publicize impact of dissertations",
+          "Use data to negotiate funding"
+        ]
+      }
+    ],
+    "metrics": [
+      "Graduation rate",
+      "Time to completion",
+      "Dissertation defense rate",
+      "Post graduation placement"
     ]
   }
 ]
