@@ -54,7 +54,7 @@ fetch("./data/pillars.json")
                 feasibility: 3,
                 startDate: "",
                 reviewDate: "",
-                notes: ""
+                metric: ""
               }
             : item;
       
@@ -101,11 +101,11 @@ fetch("./data/pillars.json")
                        value="${obj.reviewDate || ""}"
                        disabled>
             
-                <input class="item-notes"
-                       type="text"
-                       value="${obj.notes || ""}"
-                       placeholder="Notes"
-                       disabled>
+              <input class="item-metric"
+                     type="text"
+                     value="${obj.metric || ""}"
+                     placeholder="Metric"
+                     disabled>
             
               </div>
             
@@ -218,7 +218,7 @@ exportBtn?.addEventListener("click", () => {
         feasibility: parseInt(li.querySelector(".item-feasibility")?.value) || 3,
         startDate: li.querySelector(".item-start")?.value || "",
         reviewDate: li.querySelector(".item-review")?.value || "",
-        notes: li.querySelector(".item-notes")?.value.trim() || ""
+        metric: li.querySelector(".item-metric")?.value.trim() || ""
       }));
 
       return { name, items };
@@ -311,7 +311,7 @@ document.addEventListener("keydown", function (e) {
     
         <input class="item-review" type="date">
     
-        <input class="item-notes" type="text" placeholder="Notes">
+        <input class="item-metric" type="text" placeholder="Metric">
     
       </div>
     `;
