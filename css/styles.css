@@ -144,55 +144,43 @@ textarea:focus {
   border-radius: 8px;
   padding: 4px 8px;
 }
-.plan-item{
-  display:flex;
-  gap:10px;
-  align-items:center;
-  margin:6px 0;
+.plan-item {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 6px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border);
 }
 
-.plan-item .item-text{
-  flex:1;
-  padding:2px 4px;
-  border-radius:6px;
+.plan-item .item-text {
+  font-weight: 500;
+  padding: 4px 0;
+  min-height: 22px;
 }
 
-.plan-item .item-status{
-  width:120px;
-  padding:6px 8px;
-  border:1px solid var(--border);
-  border-radius:8px;
-  background:#fff;
+.plan-item-controls {
+  display: grid;
+  grid-template-columns:
+    110px   /* Status */
+    140px   /* Lead */
+    60px    /* Impact */
+    90px    /* Feasibility */
+    120px   /* Start */
+    120px   /* Review */
+    1fr;    /* Notes */
+  gap: 8px;
+  align-items: center;
 }
 
-.plan-item .item-lead{
-  width:160px;
-  padding:6px 8px;
-  border:1px solid var(--border);
-  border-radius:8px;
+.plan-item-controls input,
+.plan-item-controls select {
+  font-size: 0.8rem;
+  padding: 4px 6px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: #fff;
 }
 
 .card + .card {
   margin-top: 20px;
-}
-.plan-item {
-  display: grid;
-  grid-template-columns:
-    2fr
-    110px
-    120px
-    70px
-    90px
-    120px
-    120px
-    1.5fr;
-  gap: 8px;
-  align-items: center;
-  margin-bottom: 6px;
-}
-
-.plan-item input,
-.plan-item select {
-  font-size: 0.8rem;
-  padding: 4px;
 }
