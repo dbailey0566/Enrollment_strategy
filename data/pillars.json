@@ -46,7 +46,16 @@
       "Conversion from referral",
       "Partnership MOUs",
       "Cohort size stability"
-    ]
+    ],
+    "governance": {
+      "status": "Proposed",
+      "impact": 3,
+      "feasibility": 3,
+      "lead": "",
+      "startDate": "",
+      "reviewDate": "",
+      "notes": ""
+    }
   },
   {
     "id": "pillar2",
@@ -96,7 +105,16 @@
       "Tuition-share agreements",
       "Graduation rate"
     ],
-    "notes": "Finance requires breakeven modeling. Scholarships must be tied to growth or completion gains. Graduate funding formula pays for completions. Retention equals revenue."
+    "notes": "Finance requires breakeven modeling. Scholarships must be tied to growth or completion gains. Graduate funding formula pays for completions. Retention equals revenue.",
+    "governance": {
+      "status": "Proposed",
+      "impact": 3,
+      "feasibility": 3,
+      "lead": "",
+      "startDate": "",
+      "reviewDate": "",
+      "notes": ""
+    }
   },
   {
     "id": "pillar3",
@@ -143,7 +161,16 @@
       "Social engagement",
       "New program enrollment by concentration",
       "External media engagement"
-    ]
+    ],
+    "governance": {
+      "status": "Proposed",
+      "impact": 3,
+      "feasibility": 3,
+      "lead": "",
+      "startDate": "",
+      "reviewDate": "",
+      "notes": ""
+    }
   },
   {
     "id": "pillar4",
@@ -185,7 +212,16 @@
       "Application to enrollment rate",
       "Response time",
       "Cost per enrollment"
-    ]
+    ],
+    "governance": {
+      "status": "Proposed",
+      "impact": 3,
+      "feasibility": 3,
+      "lead": "",
+      "startDate": "",
+      "reviewDate": "",
+      "notes": ""
+    }
   },
   {
     "id": "pillar5",
@@ -227,7 +263,16 @@
       "Transfer enrollment growth",
       "Military enrollment growth",
       "Time to candidacy"
-    ]
+    ],
+    "governance": {
+      "status": "Proposed",
+      "impact": 3,
+      "feasibility": 3,
+      "lead": "",
+      "startDate": "",
+      "reviewDate": "",
+      "notes": ""
+    }
   },
   {
     "id": "pillar6",
@@ -266,6 +311,15 @@
       "Time to completion",
       "Dissertation defense rate",
       "Post graduation placement"
-    ]
+    ],
+    "governance": {
+      "status": "Proposed",
+      "impact": 3,
+      "feasibility": 3,
+      "lead": "",
+      "startDate": "",
+      "reviewDate": "",
+      "notes": ""
+    }
   }
 ]
