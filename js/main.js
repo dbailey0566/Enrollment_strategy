@@ -60,26 +60,52 @@ fetch("./data/pillars.json")
       
           return `
             <li class="plan-item">
-            
+              
               <div class="editable item-text">${obj.text || ""}</div>
             
               <div class="plan-item-controls">
             
                 <select class="item-status" disabled>
-                  ...
+                  ${["Proposed","Approved","Active","Complete","Retired"]
+                    .map(s => `<option value="${s}" ${obj.status === s ? "selected" : ""}>${s}</option>`)
+                    .join("")}
                 </select>
             
-                <input class="item-lead" ...>
+                <input class="item-lead"
+                       type="text"
+                       value="${obj.lead || ""}"
+                       placeholder="Lead"
+                       disabled>
             
-                <input class="item-impact" ...>
+                <input class="item-impact"
+                       type="number"
+                       min="1"
+                       max="5"
+                       value="${obj.impact || 3}"
+                       disabled>
             
-                <input class="item-feasibility" ...>
+                <input class="item-feasibility"
+                       type="number"
+                       min="1"
+                       max="5"
+                       value="${obj.feasibility || 3}"
+                       disabled>
             
-                <input class="item-start" ...>
+                <input class="item-start"
+                       type="date"
+                       value="${obj.startDate || ""}"
+                       disabled>
             
-                <input class="item-review" ...>
+                <input class="item-review"
+                       type="date"
+                       value="${obj.reviewDate || ""}"
+                       disabled>
             
-                <input class="item-notes" ...>
+                <input class="item-notes"
+                       type="text"
+                       value="${obj.notes || ""}"
+                       placeholder="Notes"
+                       disabled>
             
               </div>
             
@@ -266,24 +292,28 @@ document.addEventListener("keydown", function (e) {
     const newLi = document.createElement("li");
     newLi.className = "plan-item";
     newLi.innerHTML = `
-      <span class="editable item-text"></span>
+      <div class="editable item-text"></div>
     
-      <select class="item-status">
-        ${["Proposed","Approved","Active","Complete","Retired"]
-          .map(s => `<option value="${s}">${s}</option>`).join("")}
-      </select>
+      <div class="plan-item-controls">
     
-      <input class="item-lead" type="text" placeholder="Lead">
+        <select class="item-status">
+          ${["Proposed","Approved","Active","Complete","Retired"]
+            .map(s => `<option value="${s}">${s}</option>`).join("")}
+        </select>
     
-      <input class="item-impact" type="number" min="1" max="5" value="3">
+        <input class="item-lead" type="text" placeholder="Lead">
     
-      <input class="item-feasibility" type="number" min="1" max="5" value="3">
+        <input class="item-impact" type="number" min="1" max="5" value="3">
     
-      <input class="item-start" type="date">
+        <input class="item-feasibility" type="number" min="1" max="5" value="3">
     
-      <input class="item-review" type="date">
+        <input class="item-start" type="date">
     
-      <input class="item-notes" type="text" placeholder="Notes">
+        <input class="item-review" type="date">
+    
+        <input class="item-notes" type="text" placeholder="Notes">
+    
+      </div>
     `;
 
     li.parentNode.insertBefore(newLi, li.nextSibling);
