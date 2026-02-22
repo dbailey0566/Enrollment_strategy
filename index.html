@@ -42,5 +42,73 @@
     </div>
   </div>
 
+<section id="aiExplorer" class="card" style="margin-top:20px;">
+  <h2>AI Strategy Explorer</h2>
+
+  <p class="muted">
+    Paste a strategy from the plan below. Select a structured prompt to expand it.
+  </p>
+
+  <textarea id="aiStrategyInput" placeholder="Paste strategy text here..." style="width:100%; min-height:120px; margin-top:8px;"></textarea>
+
+  <div style="margin-top:12px; display:flex; flex-wrap:wrap; gap:8px;" class="ai-prompt-buttons">
+
+    <button data-prompt="Expand this strategy into a 6 month implementation roadmap with milestones." class="btn">
+      Implementation Roadmap
+    </button>
+
+    <button data-prompt="Identify risks, barriers, and mitigation strategies for this strategy." class="btn">
+      Risk Analysis
+    </button>
+
+    <button data-prompt="Develop measurable KPIs and assessment metrics." class="btn">
+      KPIs
+    </button>
+
+    <button data-prompt="Create a stakeholder communication plan." class="btn">
+      Communication Plan
+    </button>
+
+    <button data-prompt="Outline budget considerations and funding sources." class="btn">
+      Budget Strategy
+    </button>
+
+    <button data-prompt="Translate this into an executive briefing for senior leadership." class="btn">
+      Executive Brief
+    </button>
+
+  </div>
+
+  <div style="margin-top:10px;">
+    <a href="https://chat.openai.com" target="_blank">Open GPT</a> |
+    <a href="https://gemini.google.com" target="_blank">Open Gemini</a>
+  </div>
+</section>
+
+
+
+  <section id="planFeedback" class="card" style="margin-top:20px;">
+    <h2>Strategic Plan Contribution</h2>
+  
+    <p class="muted">
+      Submit suggested additions or refinements to the strategic plan.
+    </p>
+  
+    <label><strong>New Strategy Proposal</strong></label>
+    <textarea id="newStrategyInput" style="width:100%; min-height:80px;"></textarea>
+  
+    <label style="margin-top:12px; display:block;"><strong>Edit Recommendation</strong></label>
+    <textarea id="editRecommendationInput" style="width:100%; min-height:80px;"></textarea>
+  
+    <label style="margin-top:12px; display:block;"><strong>Interface Improvement</strong></label>
+    <textarea id="pageImprovementInput" style="width:100%; min-height:80px;"></textarea>
+  
+    <button id="submitFeedbackBtn" class="btn primary" style="margin-top:14px;">
+      Submit Contribution
+    </button>
+  
+    <div id="feedbackStatus" class="muted" style="margin-top:8px;"></div>
+  </section>
+
 </body>
 </html>
