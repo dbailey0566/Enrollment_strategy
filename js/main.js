@@ -173,3 +173,27 @@ copyBtn.addEventListener("click", () => {
 closeBtn.addEventListener("click", () => {
   modal.style.display = "none";
 });
+
+document.addEventListener("keydown", function (e) {
+
+  if (!adminMode) return;
+
+  const active = document.activeElement;
+
+  if (e.key === "Enter" && active && active.tagName === "LI") {
+
+    // Allow Shift+Enter to create line break inside same item
+    if (e.shiftKey) return;
+
+    e.preventDefault();
+
+    const newLi = document.createElement("li");
+    newLi.classList.add("editable");
+    newLi.contentEditable = true;
+    newLi.innerHTML = "";
+
+    active.parentNode.insertBefore(newLi, active.nextSibling);
+    newLi.focus();
+  }
+
+});
