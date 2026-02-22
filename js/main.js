@@ -60,41 +60,29 @@ fetch("./data/pillars.json")
       
           return `
             <li class="plan-item">
-      
-              <span class="editable item-text">${obj.text || ""}</span>
-      
-              <select class="item-status" disabled>
-                ${["Proposed","Approved","Active","Complete","Retired"]
-                  .map(s => `<option value="${s}" ${obj.status === s ? "selected" : ""}>${s}</option>`)
-                  .join("")}
-              </select>
-      
-              <input class="item-lead" type="text"
-                     value="${obj.lead || ""}"
-                     placeholder="Lead"
-                     disabled>
-      
-              <input class="item-impact" type="number" min="1" max="5"
-                     value="${obj.impact || 3}"
-                     disabled>
-      
-              <input class="item-feasibility" type="number" min="1" max="5"
-                     value="${obj.feasibility || 3}"
-                     disabled>
-      
-              <input class="item-start" type="date"
-                     value="${obj.startDate || ""}"
-                     disabled>
-      
-              <input class="item-review" type="date"
-                     value="${obj.reviewDate || ""}"
-                     disabled>
-      
-              <input class="item-notes" type="text"
-                     value="${obj.notes || ""}"
-                     placeholder="Notes"
-                     disabled>
-      
+            
+              <div class="editable item-text">${obj.text || ""}</div>
+            
+              <div class="plan-item-controls">
+            
+                <select class="item-status" disabled>
+                  ...
+                </select>
+            
+                <input class="item-lead" ...>
+            
+                <input class="item-impact" ...>
+            
+                <input class="item-feasibility" ...>
+            
+                <input class="item-start" ...>
+            
+                <input class="item-review" ...>
+            
+                <input class="item-notes" ...>
+            
+              </div>
+            
             </li>
           `;
       
