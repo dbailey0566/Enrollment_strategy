@@ -112,3 +112,30 @@ footer {
 [contenteditable="true"] {
   outline: 2px dashed var(--accent);
 }
+
+textarea {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 10px;
+  font-family: inherit;
+  font-size: 14px;
+  resize: vertical;
+  background: #fff;
+}
+
+textarea:focus {
+  outline: none;
+  border-color: rgba(11,95,255,.45);
+}
+
+.ai-prompt-buttons {
+  margin-top: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+#aiExplorer h2,
+#planFeedback h2 {
+  margin-bottom: 6px;
+}
