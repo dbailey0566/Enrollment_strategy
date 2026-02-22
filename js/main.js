@@ -218,3 +218,100 @@ document.addEventListener("keydown", function (e) {
   }
 
 });
+
+// ==========================
+// AI STRATEGY EXPLORER
+// ==========================
+
+const aiInput = document.getElementById("aiStrategyInput");
+
+if (aiInput) {
+
+  document.querySelectorAll(".ai-prompt-buttons button").forEach(button => {
+
+    const originalText = button.textContent;
+
+    button.addEventListener("click", () => {
+
+      const strategyText = aiInput.value.trim();
+
+      if (!strategyText) {
+        alert("Paste a strategy first.");
+        return;
+      }
+
+      const structuredPrompt = button.getAttribute("data-prompt");
+      const combinedText = strategyText + "\n\n" + structuredPrompt;
+
+      navigator.clipboard.writeText(combinedText)
+        .then(() => {
+          button.textContent = "Copied!";
+          setTimeout(() => {
+            button.textContent = originalText;
+          }, 1200);
+        })
+        .catch(() => {
+          alert("Clipboard copy failed.");
+        });
+
+    });
+
+  });
+
+}
+
+
+
+// ==========================
+// FEEDBACK SUBMISSION
+// ==========================
+
+// Optional: Keep Google Sheet integration
+// Replace with your current Web App URL if desired
+
+const WEB_APP_URL = "YOUR_GOOGLE_SCRIPT_URL_HERE";
+
+const submitBtn = document.getElementById("submitFeedbackBtn");
+const statusBox = document.getElementById("feedbackStatus");
+
+if (submitBtn) {
+
+  submitBtn.addEventListener("click", async () => {
+
+    const newStrategy = document.getElementById("newStrategyInput")?.value.trim() || "";
+    const editRecommendation = document.getElementById("editRecommendationInput")?.value.trim() || "";
+    const pageImprovement = document.getElementById("pageImprovementInput")?.value.trim() || "";
+
+    if (!newStrategy && !editRecommendation && !pageImprovement) {
+      statusBox.textContent = "Please enter at least one contribution.";
+      return;
+    }
+
+    statusBox.textContent = "Submitting...";
+
+    try {
+
+      await fetch(WEB_APP_URL, {
+        method: "POST",
+        mode: "no-cors",
+        body: new URLSearchParams({
+          newStrategy,
+          editRecommendation,
+          pageImprovement
+        })
+      });
+
+      statusBox.textContent = "Contribution recorded.";
+
+      document.getElementById("newStrategyInput").value = "";
+      document.getElementById("editRecommendationInput").value = "";
+      document.getElementById("pageImprovementInput").value = "";
+
+    } catch (error) {
+      statusBox.textContent = "Submission failed.";
+    }
+
+  });
+
+}
+
