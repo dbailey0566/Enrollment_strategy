@@ -144,3 +144,30 @@ textarea:focus {
   border-radius: 8px;
   padding: 4px 8px;
 }
+.plan-item{
+  display:flex;
+  gap:10px;
+  align-items:center;
+  margin:6px 0;
+}
+
+.plan-item .item-text{
+  flex:1;
+  padding:2px 4px;
+  border-radius:6px;
+}
+
+.plan-item .item-status{
+  width:120px;
+  padding:6px 8px;
+  border:1px solid var(--border);
+  border-radius:8px;
+  background:#fff;
+}
+
+.plan-item .item-lead{
+  width:160px;
+  padding:6px 8px;
+  border:1px solid var(--border);
+  border-radius:8px;
+}
